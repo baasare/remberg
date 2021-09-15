@@ -7,8 +7,7 @@ module.exports = (mongoose, mongoosePaginate) => {
             type: String
         },
     }, {
-        collection: 'products',
-        timestamps: true
+        collection: 'products'
     })
 
     schema.plugin(mongoosePaginate)

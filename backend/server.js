@@ -4,8 +4,7 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./models/index");
-const Product = require("./models/product.model");
-const fs = require("fs");
+
 
 // initialize app
 const app = express();
@@ -31,6 +30,7 @@ db.mongoose.connect(db.url, {
 
     // clear mongodb
     await db.products.deleteMany({});
+    await db.selections.deleteMany({});
 
     const fs = require('fs');
     // read and parse data
@@ -38,12 +38,23 @@ db.mongoose.connect(db.url, {
 
     // insert parsed data into mongodb
     db.products.insertMany(data.products);
+
+    db.selections.insertMany([
+        {"name": "Machine 3"},
+        {"name": "Machine 9"},
+        {"name": "Machine 1"},
+        {"name": "Machine 6"},
+        {"name": "Machine 7"},
+    ]);
+
+
 }).catch(err => {
     console.log("Cannot connect to the database!", err);
     process.exit();
 });
 
 require("./routes/product.route.js")(app);
+require("./routes/selection.route.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

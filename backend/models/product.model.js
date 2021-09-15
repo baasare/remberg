@@ -1,16 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+module.exports = (mongoose, mongoosePaginate) => {
+    let schema = mongoose.Schema({
+        name: {
+            type: String
+        },
+        company: {
+            type: String
+        },
+    }, {
+        collection: 'products',
+        timestamps: true
+    })
 
-let productSchema = new Schema({
-    name: {
-        type: String
-    },
-    company: {
-        type: String
-    },
-}, {
-    collection: 'products',
-    timestamps: true
-})
+    schema.plugin(mongoosePaginate)
 
-module.exports = mongoose.model('ProductSchema', productSchema)
+    return mongoose.model("products", schema);
+};

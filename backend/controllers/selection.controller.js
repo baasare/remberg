@@ -25,7 +25,7 @@ exports.saveSelection = async (req, res) => {
 
 // Delete a Selected Product
 exports.deleteSelection = async (req, res) => {
-    const selectedProductId = await Selection.find(req.params.name);
+    const selectedProductId = await Selection.findOne({name: req.params.name});
     if (!selectedProductId) return res.status(404).json({message: "No Data Found"});
     try {
         const removedSelectedProduct = await Selection.deleteOne({name: req.params.name});

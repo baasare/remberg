@@ -39,14 +39,6 @@ db.mongoose.connect(db.url, {
     // insert parsed data into mongodb
     db.products.insertMany(data.products);
 
-    db.selections.insertMany([
-        {"name": "Machine 3"},
-        {"name": "Machine 9"},
-        {"name": "Machine 1"},
-        {"name": "Machine 6"},
-        {"name": "Machine 7"},
-    ]);
-
 
 }).catch(err => {
     console.log("Cannot connect to the database!", err);

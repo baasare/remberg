@@ -14,6 +14,8 @@ import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {HttpClientModule} from "@angular/common/http";
+import {StoreModule} from "@ngrx/store";
+import {productReducer} from "./reducers/product.reducer";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({products: productReducer}),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,

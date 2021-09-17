@@ -3,6 +3,9 @@ module.exports = mongoose => {
         name: {
             type: String
         },
+        company: {
+            type: String
+        },
     }, {
         collection: 'selection',
         timestamps: true

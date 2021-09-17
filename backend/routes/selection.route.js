@@ -10,7 +10,7 @@ module.exports = app => {
     router.post('/', selections.saveSelection);
 
     // DELETE Selected Product
-    router.delete('/:id', selections.deleteSelection);
+    router.delete('/:name', selections.deleteSelection);
 
     app.use('/api/v1/selection', router);
 }

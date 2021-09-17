@@ -5,6 +5,12 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {Product} from "../models/product.model";
 import {ApiService} from "../services/api.service";
 import {Subscription} from "rxjs";
+import {Store} from '@ngrx/store';
+import {addProduct, removeProduct, retrieveProducts} from "../actions/product.actions";
+import {MatCheckboxChange} from "@angular/material/checkbox";
+import {take} from "rxjs/operators";
+import {AppState} from "../app.state";
+
 
 @Component({
   selector: 'product-table',
@@ -17,6 +23,8 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
   selection = new SelectionModel<Product>(true, []);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  selectedProducts!: Product[];
+
   name = '';
   pageIndex = 0;
   pageSize = 5;
@@ -26,17 +34,56 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subscriptions = new Subscription();
 
-  //dependency injection
-  constructor(private productApiService: ApiService) {
+
+  constructor(
+    private productApiService: ApiService,
+    private store: Store<AppState>
+  ) {
+    this.productApiService
+      .getAllSelectedProducts()
+      .subscribe((products) => {
+        products.forEach(product => this.selection.select(product))
+        return this.store.dispatch(retrieveProducts({products}))
+      });
+  }
+
+  isChecked(product: Product): boolean {
+
+    let checked = false;
+    this.store.pipe(take(1)).subscribe(s => {
+      this.selectedProducts = s.products as Product[];
+      checked = this.selectedProducts.some(e => e.name === product.name)
+    });
+    return checked;
+  }
+
+  handleCheck(event: MatCheckboxChange, product: Product) {
+    event.checked ?
+      this.handleSelection(product) :
+      this.handleDeselection(product);
+
+    this.isChecked(product);
+    return event ? this.selection.toggle(product) : null
+  }
+
+  handleSelection(product: Product) {
+
+    this.selection.select(product);
+    this.store.dispatch(addProduct({product}));
+    this.productApiService.selectProduct(product).subscribe();
+  }
+
+  handleDeselection(product: Product) {
+    this.selection.deselect(product);
+    this.store.dispatch(removeProduct({product}));
+    this.productApiService.deselectProducts(product.name).subscribe()
   }
 
 
-  /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     return this.selection.selected.length === this.dataSource.data.length;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
@@ -46,7 +93,6 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.selection.select(...this.dataSource.data);
   }
 
-  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: Product): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
@@ -73,10 +119,6 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     return params;
   }
 
-
-  /**
-   * This method returns products
-   */
   getProducts() {
 
     const params = this.getRequestParams(this.pageIndex, this.pageSize, this.name);
@@ -92,19 +134,6 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  getSelectedProducts() {
-
-    this.subscriptions.add(
-      this.productApiService.getAllSelectedProducts()
-        .subscribe((res) => {
-          this.selection.isSelected(res);
-          console.log(res);
-          console.log(this.selection);
-        }))
-
-  }
-
-
   public doFilter = (event: any) => {
     this.name = event.target.value.trim().toLocaleLowerCase();
     this.getProducts();
@@ -116,10 +145,8 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.getProducts();
   }
 
-
   ngOnInit() {
     this.getProducts();
-    this.getSelectedProducts();
   }
 
   ngAfterViewInit() {

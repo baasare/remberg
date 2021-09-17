@@ -5,21 +5,21 @@
     </mat-form-field>
   </div>
 
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table   [dataSource]="dataSource" matSort >
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
-        Selected
-<!--        <mat-checkbox (change)="$event ? masterToggle() : null"-->
+                Selected
+<!--        <mat-checkbox (change)="handleMasterCheckEvent($event)"-->
 <!--                      [checked]="selection.hasValue() && isAllSelected()"-->
-<!--                      [indeterminate]="selection.hasValue() && !isAllSelected()"-->
+<!--                      [indeterminate]="selection.selected.length > 0 && !isAllSelected()"-->
 <!--                      [aria-label]="checkboxLabel()">-->
 <!--        </mat-checkbox>-->
       </th>
       <td mat-cell *matCellDef="let row">
         <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="handleCheck($event, row)"
+                      (change)="handleCheckEvent($event, row)"
                       [checked]="isChecked(row)"
                       [aria-label]="checkboxLabel(row)">
         </mat-checkbox>
@@ -28,14 +28,14 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Assert</th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
 
     <!-- Company Column -->
     <ng-container matColumnDef="company">
-      <th mat-header-cell *matHeaderCellDef> Company</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Company</th>
       <td mat-cell *matCellDef="let element"> {{element.company}} </td>
     </ng-container>
 

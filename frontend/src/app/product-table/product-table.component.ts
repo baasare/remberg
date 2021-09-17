@@ -1,15 +1,17 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {MatCheckboxChange} from "@angular/material/checkbox";
 import {MatPaginator} from "@angular/material/paginator";
 import {SelectionModel} from "@angular/cdk/collections";
-import {Product} from "../models/product.model";
-import {ApiService} from "../services/api.service";
 import {Subscription} from "rxjs";
+import {take} from "rxjs/operators";
 import {Store} from '@ngrx/store';
 import {addProduct, removeProduct, retrieveProducts} from "../actions/product.actions";
-import {MatCheckboxChange} from "@angular/material/checkbox";
-import {take} from "rxjs/operators";
+import {Product} from "../models/product.model";
+import {ApiService} from "../services/api.service";
 import {AppState} from "../app.state";
+import {getRequestParams} from "../product.utils";
+import {MatSort} from "@angular/material/sort";
 
 
 @Component({
@@ -21,30 +23,48 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns: string[] = ['select', 'name', 'company'];
   dataSource = new MatTableDataSource<Product>();
   selection = new SelectionModel<Product>(true, []);
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  selectedProducts!: Product[];
 
   name = '';
   pageIndex = 0;
   pageSize = 5;
   pageSizes = [5, 10, 15];
-
   totalProductCount!: number;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  selectedProducts!: Product[];
 
   private subscriptions = new Subscription();
 
-
-  constructor(
-    private productApiService: ApiService,
-    private store: Store<AppState>
-  ) {
+  constructor(private productApiService: ApiService, private store: Store<AppState>) {
     this.productApiService
       .getAllSelectedProducts()
       .subscribe((products) => {
         products.forEach(product => this.selection.select(product))
         return this.store.dispatch(retrieveProducts({products}))
       });
+  }
+
+  ngOnInit() {
+    this.getProducts();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy() {
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
+    }
+  }
+
+  checkboxLabel(product?: Product): string {
+    if (!product) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(product) ? 'deselect' : 'select'} row ${product.name + 1}`;
   }
 
   isChecked(product: Product): boolean {
@@ -57,31 +77,12 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     return checked;
   }
 
-  handleCheck(event: MatCheckboxChange, product: Product) {
-    event.checked ?
-      this.handleSelection(product) :
-      this.handleDeselection(product);
-
-    this.isChecked(product);
-    return event ? this.selection.toggle(product) : null
+  handleCheckEvent(event: MatCheckboxChange, product: Product) {
+    event.checked ? this.handleSelection(product) : this.handleDeselection(product);
   }
 
-  handleSelection(product: Product) {
-
-    this.selection.select(product);
-    this.store.dispatch(addProduct({product}));
-    this.productApiService.selectProduct(product).subscribe();
-  }
-
-  handleDeselection(product: Product) {
-    this.selection.deselect(product);
-    this.store.dispatch(removeProduct({product}));
-    this.productApiService.deselectProducts(product.name).subscribe()
-  }
-
-
-  isAllSelected() {
-    return this.selection.selected.length === this.dataSource.data.length;
+  handleMasterCheckEvent(event: MatCheckboxChange){
+    event ? this.masterToggle() : null
   }
 
   masterToggle() {
@@ -93,48 +94,40 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.selection.select(...this.dataSource.data);
   }
 
-  checkboxLabel(row?: Product): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name + 1}`;
+
+  handleSelection(product: Product) {
+    this.store.dispatch(addProduct({product}));
+    this.selection.select(product);
+    this.subscriptions.add(this.productApiService.selectProduct(product).subscribe());
   }
 
-  getRequestParams(pageIndex: number, pageSize: number, searchTitle: string,) {
-    let params = {} as any;
+  handleDeselection(product: Product) {
+    this.store.dispatch(removeProduct({product}));
+    this.selection.deselect(product);
+    this.subscriptions.add(this.productApiService.deselectProducts(product.name).subscribe())
+  }
 
-
-    if (searchTitle) {
-      params[`name`] = searchTitle;
-    }
-
-    if (pageIndex) {
-      params[`pageIndex`] = pageIndex;
-    }
-
-    if (pageSize) {
-      params[`pageSize`] = pageSize;
-    }
-
-    return params;
+  isAllSelected() {
+    return this.selection.selected.length === this.dataSource.data.length;
   }
 
   getProducts() {
-
-    const params = this.getRequestParams(this.pageIndex, this.pageSize, this.name);
+    const params = getRequestParams(this.pageIndex, this.pageSize, this.name);
 
     this.subscriptions.add(
       this.productApiService.getAllProducts(params)
         .subscribe((res) => {
-          const {docs, totalDocs} = res;
-          this.totalProductCount = totalDocs;
+            const {docs, totalDocs} = res;
+            this.totalProductCount = totalDocs;
 
-          this.dataSource = new MatTableDataSource<Product>(docs);
-        }))
-
+            this.dataSource = new MatTableDataSource<Product>(docs);
+            this.dataSource.sort = this.sort;
+          }
+        )
+    )
   }
 
-  public doFilter = (event: any) => {
+  doFilter = (event: any) => {
     this.name = event.target.value.trim().toLocaleLowerCase();
     this.getProducts();
   }
@@ -144,20 +137,5 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.pageSize = event.pageSize;
     this.getProducts();
   }
-
-  ngOnInit() {
-    this.getProducts();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
-  ngOnDestroy() {
-    if (this.subscriptions) {
-      this.subscriptions.unsubscribe();
-    }
-  }
-
 
 }

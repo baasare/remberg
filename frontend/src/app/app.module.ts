@@ -12,10 +12,12 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatSort} from "@angular/material/sort";
 
 import {HttpClientModule} from "@angular/common/http";
 import {StoreModule} from "@ngrx/store";
 import {productReducer} from "./reducers/product.reducer";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {productReducer} from "./reducers/product.reducer";
     MatToolbarModule,
     MatFormFieldModule,
     HttpClientModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

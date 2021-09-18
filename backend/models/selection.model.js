@@ -1,5 +1,8 @@
 module.exports = mongoose => {
     let schema = mongoose.Schema({
+        _id: {
+            type: String
+        },
         name: {
             type: String
         },
@@ -8,7 +11,8 @@ module.exports = mongoose => {
         },
     }, {
         collection: 'selection',
-        timestamps: true
+        timestamps: true,
+        _id: false
     })
 
     return mongoose.model("selections", schema);

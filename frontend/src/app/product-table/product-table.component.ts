@@ -72,7 +72,7 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     let checked = false;
     this.store.pipe(take(1)).subscribe(s => {
       this.selectedProducts = s.products as Product[];
-      checked = this.selectedProducts.some(e => e.name === product.name)
+      checked = this.selectedProducts.some(e => e._id === product._id)
     });
     return checked;
   }
@@ -94,7 +94,6 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.selection.select(...this.dataSource.data);
   }
 
-
   handleSelection(product: Product) {
     this.store.dispatch(addProduct({product}));
     this.selection.select(product);
@@ -104,7 +103,7 @@ export class ProductTableComponent implements OnInit, OnDestroy, AfterViewInit {
   handleDeselection(product: Product) {
     this.store.dispatch(removeProduct({product}));
     this.selection.deselect(product);
-    this.subscriptions.add(this.productApiService.deselectProducts(product.name).subscribe())
+    this.subscriptions.add(this.productApiService.deselectProducts(product._id).subscribe())
   }
 
   isAllSelected() {

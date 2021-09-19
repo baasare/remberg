@@ -22,10 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
-db.mongoose.connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(async () => {
+db.mongoose.connect(db.url).then(async () => {
     console.log("Connected to the database!");
 
     // clear mongodb
@@ -34,7 +31,8 @@ db.mongoose.connect(db.url, {
 
     const fs = require('fs');
     // read and parse data
-    let data = JSON.parse(fs.readFileSync('data.json'));
+    const file = fs.readFileSync(__dirname + '/data.json');
+    let data = JSON.parse(file);
 
     // insert parsed data into mongodb
     db.products.insertMany(data.products);

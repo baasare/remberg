@@ -1,6 +1,6 @@
 export interface Product {
   name: string;
   company: string;
-  // id: number;
+  _id: number;
 }
 

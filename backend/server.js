@@ -31,7 +31,7 @@ db.mongoose.connect(db.url).then(async () => {
 
     const fs = require('fs');
     // read and parse data
-    const file = fs.readFileSync('data.json');
+    const file = fs.readFileSync(__dirname + '/data.json');
     let data = JSON.parse(file);
 
     // insert parsed data into mongodb

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0fe5d09b-dde5-4879-98e1-b0c7980d9be9" name="Changes" comment="added gitignore to the main parent directory">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/remberg.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="1yAUteII9zPp9yqIQyVzzAhXRP2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.17.5" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.17.5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../feather" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Users\user\Documents\Projects\remberg\frontend\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Documents\Projects\remberg\frontend\src\app\models" />
+      <recent name="C:\Users\user\Documents\Projects\remberg\backend\routes" />
+      <recent name="C:\Users\user\Documents\Projects\remberg\backend\controllers" />
+      <recent name="C:\Users\user\Documents\Projects\remberg\backend\models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Documents\Projects\remberg\frontend\src\app" />
+      <recent name="C:\Users\user\Documents\Projects\remberg\frontend\src\app\selectors" />
+      <recent name="C:\Users\user\Documents\Projects\remberg\frontend\src\app\services" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.ng serve">
+    <configuration name="server.js" type="NodeJSConfigurationType" nameIsGenerated="true" node-parameters="C:\Users\user\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon.js" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/backend">
+      <method v="2" />
+    </configuration>
+    <configuration name="ng serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="ng" />
+      </scripts>
+      <arguments value="serve" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.server.js" />
+      <item itemvalue="npm.ng serve" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.ng serve" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fe5d09b-dde5-4879-98e1-b0c7980d9be9" name="Changes" comment="" />
+      <created>1631694121225</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631694121225</updated>
+      <workItem from="1631694130104" duration="1133000" />
+      <workItem from="1631695343699" duration="3280000" />
+      <workItem from="1631699462493" duration="13832000" />
+      <workItem from="1631741507900" duration="34973000" />
+      <workItem from="1631857563626" duration="4781000" />
+      <workItem from="1631862476487" duration="16931000" />
+      <workItem from="1631899241042" duration="82000" />
+      <workItem from="1631913159255" duration="7000000" />
+      <workItem from="1632076756107" duration="413000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1631699599836</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1631699599836</updated>
+    </task>
+    <task id="LOCAL-00002" summary="database config added">
+      <created>1631700890200</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631700890200</updated>
+    </task>
+    <task id="LOCAL-00003" summary="data generator added">
+      <created>1631709168562</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1631709168562</updated>
+    </task>
+    <task id="LOCAL-00004" summary="clear mongodb, read generated data from json file and populate">
+      <created>1631709235331</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1631709235331</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added controller for handing routes">
+      <created>1631710140657</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631710140657</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added pagination using mongoose-paginate-v2">
+      <created>1631710195691</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1631710195691</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added selection feature">
+      <created>1631712046654</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631712046654</updated>
+    </task>
+    <task id="LOCAL-00008" summary="start of frontend">
+      <created>1631741548496</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631741548496</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added material library">
+      <created>1631741811266</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631741811266</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added paginated material table with checkboxes">
+      <created>1631743412557</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631743412557</updated>
+    </task>
+    <task id="LOCAL-00011" summary="populated table with dummy data">
+      <created>1631745390804</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631745390804</updated>
+    </task>
+    <task id="LOCAL-00012" summary="integrated products api with frontend with pagination feature working">
+      <created>1631804647140</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1631804647140</updated>
+    </task>
+    <task id="LOCAL-00013" summary="implemented ngrx state management to handle checkbox state">
+      <created>1631887173837</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631887173837</updated>
+    </task>
+    <task id="LOCAL-00014" summary="task complete">
+      <created>1631890094894</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631890094894</updated>
+    </task>
+    <task id="LOCAL-00015" summary="code refactor">
+      <created>1631953651965</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631953651965</updated>
+    </task>
+    <task id="LOCAL-00016" summary="code refactor">
+      <created>1631955627903</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1631955627903</updated>
+    </task>
+    <task id="LOCAL-00017" summary="code refactor">
+      <created>1632076964809</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1632076964809</updated>
+    </task>
+    <task id="LOCAL-00018" summary="added gitignore to the main parent directory">
+      <created>1632077069116</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1632077069116</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="database config added" />
+    <MESSAGE value="data generator added" />
+    <MESSAGE value="clear mongodb, read generated data from json file and populate" />
+    <MESSAGE value="added controller for handing routes" />
+    <MESSAGE value="added pagination using mongoose-paginate-v2" />
+    <MESSAGE value="added selection feature" />
+    <MESSAGE value="start of frontend" />
+    <MESSAGE value="added material library" />
+    <MESSAGE value="added paginated material table with checkboxes" />
+    <MESSAGE value="populated table with dummy data" />
+    <MESSAGE value="integrated products api with frontend with pagination feature working" />
+    <MESSAGE value="implemented ngrx state management to handle checkbox state" />
+    <MESSAGE value="task complete" />
+    <MESSAGE value="code refactor" />
+    <MESSAGE value="added gitignore to the main parent directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="added gitignore to the main parent directory" />
+  </component>
+</project>
